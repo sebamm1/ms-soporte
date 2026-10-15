@@ -20,7 +20,13 @@ class TicketRepositoryTest {
 
     @Test
     void testFindByIdUsuario() {
-        Ticket ticket = new Ticket(1L, 100L, "Asunto", "Desc", EstadoTicket.ABIERTO, null);
+        Ticket ticket = new Ticket();
+        ticket.setId(1L);
+        ticket.setIdUsuario(100L);
+        ticket.setAsunto("Soporte");
+        ticket.setDescripcion("Consulta");
+        ticket.setEstado(EstadoTicket.ABIERTA);
+
         when(ticketRepository.findByIdUsuario(100L)).thenReturn(List.of(ticket));
 
         List<Ticket> resultado = ticketRepository.findByIdUsuario(100L);
